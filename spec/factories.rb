@@ -1,7 +1,7 @@
 require 'factory_girl'
 
 Factory.define :team, :class => Team do |team|
-  team.name 'Dust Bunnies'
+  team.name 'Glorious Dustbunnies'
 end
 
 Factory.sequence(:sprint_number) { |n| n }

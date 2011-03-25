@@ -42,7 +42,7 @@ class SprintsController < ApplicationController
   # POST /sprints
   # POST /sprints.xml
   def create
-    @sprint = Sprint.new(params[:sprint])
+    @sprint = Sprint.new(params[:sprint].merge(:team_id => @team.id))
 
     respond_to do |format|
       if @sprint.save

@@ -10,10 +10,16 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :team_id %><br />
-    <%= f.select :team_id, Team.all.map { |e| [e.name, e.id] } %>
-  </div>
+  <% if @team.blank? %>
+    <div class="field">
+      <%= f.label :team_id %><br />
+      <%= f.select :team_id, Team.all.map { |e| [e.name, e.id] } %>
+    </div>
+  <% else %>
+    <div class="field">
+      <%= f.label :team_id %>: <%= @team.name %>
+    </div>
+  <% end %>
   <div class="field">
     <%= f.label :number %><br />
     <%= f.text_field :number %>

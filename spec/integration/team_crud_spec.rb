@@ -3,25 +3,25 @@ require 'integration/support'
 
 describe "Team CRUD" do
   before(:each) do
-    @dust_bunnies = Factory.create(:team, :name => 'Glorious Dustbunnies')
+    @team = Factory.create(:team, :name => 'Glorious Dustbunnies')
   end
   
   describe "index page" do
     it "should list teams" do
       visit teams_path
-      page.should have_content(@dust_bunnies.name)
+      page.should have_content(@team.name)
     end
   end
   
   describe "show page" do
     it "should have the team name" do
-      visit team_path(@dust_bunnies)
-      page.should have_content(@dust_bunnies.name)
+      visit team_path(@team)
+      page.should have_content(@team.name)
     end
     
     it "should link to sprints for the team" do
-      s = Factory.create(:sprint, :team => @dust_bunnies)
-      visit team_path(@dust_bunnies)
+      s = Factory.create(:sprint, :team => @team)
+      visit team_path(@team)
       click_link s.name
       current_path.should == sprint_path(s)
     end
