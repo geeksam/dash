@@ -13,6 +13,11 @@ describe "directory structure" do
     Dir.entries(File.join(Rails.root, *%w[spec])).should_not include('requests')
   end
 
+  # Controller specs weren't terribly useful once I started deleting routes...
+  it "should not have a /spec/controllers directory" do
+    Dir.entries(File.join(Rails.root, *%w[spec])).should_not include('controllers')
+  end
+
   # Helpers!  We don't need 'em!  (Delete these specs if, at some point, we do.)
   it "should not have controller-specific helpers" do
     Dir.entries(File.join(Rails.root, *%w[app helpers])).should == %w[. .. application_helper.rb]
