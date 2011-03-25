@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(:version => 20110325171850) do
 
   create_table "sprints", :force => true do |t|
-    t.integer  "team_id_id"
+    t.integer  "team_id"
     t.integer  "number"
     t.date     "starts_on"
     t.date     "ends_on"

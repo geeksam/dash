@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :team_id %><br />
-    <%= f.text_field :team_id %>
+    <%= f.select :team_id, Team.all.map { |e| [e.name, e.id] } %>
   </div>
   <div class="field">
     <%= f.label :number %><br />
