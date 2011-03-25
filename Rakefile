@@ -5,3 +5,10 @@ require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
 Dash::Application.load_tasks
+
+namespace :models do
+  desc "Annotate models using the annotate gem"
+  task :annotate do
+    `annotate -i -m -p after`
+  end
+end
