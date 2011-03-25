@@ -1,5 +1,13 @@
 class Sprint < ActiveRecord::Base
   belongs_to :team
+
+  def team_name
+    team.try(:name)
+  end
+
+  def name
+    'Sprint #%d' % number
+  end
 end
 
 # == Schema Information

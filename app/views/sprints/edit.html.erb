@@ -1,6 +1,8 @@
 <h1>Editing sprint</h1>
 
-<%= render 'form' %>
+<%= form_for(@sprint) do |f| %>
+  <%= render 'form', { :f => f } %>
+<% end %>
 
 <%= link_to 'Show', @sprint %> |
 <%= link_to 'Back', sprints_path %>

@@ -1,9 +1,13 @@
-<h1>Listing sprints</h1>
+<% if @team %>
+  <h1>Sprints for team: <%= @team.name %></h1>
+<% else %>
+  <h1>Listing sprints</h1>
+<% end %>
 
 <table>
   <tr>
     <th>Team</th>
-    <th>Number</th>
+    <th>Sprint</th>
     <th>Starts on</th>
     <th>Ends on</th>
     <th></th>
@@ -13,8 +17,8 @@
 
 <% @sprints.each do |sprint| %>
   <tr>
-    <td><%= sprint.team_id %></td>
-    <td><%= sprint.number %></td>
+    <td><%= sprint.team_name %></td>
+    <td><%= sprint.name %></td>
     <td><%= sprint.starts_on %></td>
     <td><%= sprint.ends_on %></td>
     <td><%= link_to 'Show', sprint %></td>
@@ -26,4 +30,4 @@
 
 <br />
 
-<%= link_to 'New Sprint', new_sprint_path %>
+<%= link_to 'New Sprint', new_team_sprint_path(@team) %>

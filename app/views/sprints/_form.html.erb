@@ -1,4 +1,3 @@
-<%= form_for(@sprint) do |f| %>
   <% if @sprint.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@sprint.errors.count, "error") %> prohibited this sprint from being saved:</h2>
@@ -30,4 +29,3 @@
   <div class="actions">
     <%= f.submit %>
   </div>
-<% end %>

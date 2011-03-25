@@ -5,6 +5,15 @@
   <%= @team.name %>
 </p>
 
+<p>
+  <b>Sprints:</b>
+  <ul>
+    <% @team.sprints.each do |sprint| %>
+      <li><%= link_to sprint.name, sprint %></li>
+    <% end %>
+    <li><%= link_to 'New Sprint', new_team_sprint_path(@team), :class => 'new_link' %></li>
+  </ul>
+</p>
 
 <%= link_to 'Edit', edit_team_path(@team) %> |
 <%= link_to 'Back', teams_path %>

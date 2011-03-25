@@ -1,4 +1,5 @@
 class Team < ActiveRecord::Base
+  has_many :sprints, :order => 'sprints.number'
 end
 
 # == Schema Information

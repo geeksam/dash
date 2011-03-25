@@ -1,8 +1,10 @@
 class SprintsController < ApplicationController
+  before_filter :load_team_from_params
+
   # GET /sprints
   # GET /sprints.xml
   def index
-    @sprints = Sprint.all
+    @sprints = @team.try(:sprints) || Sprint.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -79,5 +81,10 @@ class SprintsController < ApplicationController
       format.html { redirect_to(sprints_url) }
       format.xml  { head :ok }
     end
+  end
+
+  protected
+  def load_team_from_params
+    @team = Team.find(params[:team_id], :include => :sprints) if params[:team_id].present?
   end
 end
