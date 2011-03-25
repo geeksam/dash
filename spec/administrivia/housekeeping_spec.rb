@@ -25,4 +25,9 @@ describe "directory structure" do
   it "should not have a spec/helpers directory (until we actually need one!)" do
     Dir.entries(File.join(Rails.root, *%w[spec])).should_not include('helpers')
   end
+
+  # Fie on view specs!
+  it "should not have a /spec/views directory" do
+    Dir.entries(File.join(Rails.root, *%w[spec])).should_not include('views')
+  end
 end

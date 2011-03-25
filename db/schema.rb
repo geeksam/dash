@@ -10,7 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110325171850) do
+ActiveRecord::Schema.define(:version => 20110325215449) do
+
+  create_table "iterations", :force => true do |t|
+    t.integer  "sprint_id"
+    t.integer  "number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sprints", :force => true do |t|
     t.integer  "team_id"

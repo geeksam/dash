@@ -1,0 +1,8 @@
+<h1>Editing iteration</h1>
+
+<%= form_for(@iteration) do |f| %>
+  <%= render 'form', { :f => f } %>
+<% end %>
+
+<%= link_to 'Show', @iteration %> |
+<%= link_to 'Back', iterations_path %>

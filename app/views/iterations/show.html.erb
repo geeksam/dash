@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Sprint:</b>
+  <%= @iteration.sprint_name %>
+</p>
+
+<p>
+  <b>Iteration:</b>
+  <%= @iteration.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_iteration_path(@iteration) %> |
+<%= link_to "Back to #{@sprint.name}", sprint_path(@sprint) if @sprint.present? %>

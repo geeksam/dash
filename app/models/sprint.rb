@@ -1,5 +1,6 @@
 class Sprint < ActiveRecord::Base
   belongs_to :team
+  has_many :iterations, :order => 'iterations.number'
 
   def team_name
     team.try(:name)

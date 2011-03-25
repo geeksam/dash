@@ -20,6 +20,16 @@
   <%= @sprint.ends_on %>
 </p>
 
+<p>
+  <b>Iterations:</b>
+  <ul>
+    <% @sprint.iterations.each do |iter| %>
+      <li><%= link_to iter.name, iter %></li>
+    <% end %>
+    <li><%= link_to 'New Iteration', new_sprint_iteration_path(@sprint), :class => 'new_link' %></li>
+  </ul>
+</p>
+
 
 <%= link_to 'Edit', edit_sprint_path(@sprint) %> |
 <%= link_to "Back to Team #{@team.name}", team_path(@team) if @team.present? %>
