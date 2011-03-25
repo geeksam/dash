@@ -1,0 +1,29 @@
+<h1>Listing sprints</h1>
+
+<table>
+  <tr>
+    <th>Team</th>
+    <th>Number</th>
+    <th>Starts on</th>
+    <th>Ends on</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @sprints.each do |sprint| %>
+  <tr>
+    <td><%= sprint.team_id %></td>
+    <td><%= sprint.number %></td>
+    <td><%= sprint.starts_on %></td>
+    <td><%= sprint.ends_on %></td>
+    <td><%= link_to 'Show', sprint %></td>
+    <td><%= link_to 'Edit', edit_sprint_path(sprint) %></td>
+    <td><%= link_to 'Destroy', sprint, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Sprint', new_sprint_path %>

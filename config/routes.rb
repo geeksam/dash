@@ -1,5 +1,8 @@
 Dash::Application.routes.draw do
-  resources :teams
+  resources :teams do
+    resources :sprints
+  end
+  resources :sprints
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
