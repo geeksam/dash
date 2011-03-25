@@ -39,6 +39,9 @@ module Dash
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
 
+    # Use SQL to clone schema (this should help with indices)
+    config.active_record.schema_format = :sql
+
     # generators should avoid :test_unit
     config.generators do |g|
       g.test_framework :rspec
