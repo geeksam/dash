@@ -1,8 +1,10 @@
 Dash::Application.routes.draw do
+  # It doesn't really make sense to create child resources outside the context of
+  # their parent resource, so I've disabled some of the new/create routes accordingly.
   resources :teams do
     resources :sprints
   end
-  resources :sprints
+  resources :sprints, :except => [:new, :create]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
