@@ -1,0 +1,18 @@
+login: &login
+  adapter: postgresql
+  host: localhost
+  encoding: UTF8
+  username: sam
+  schema_search_path: public
+
+production:
+  <<: *login
+  database: dash_prod
+
+development:
+  <<: *login
+  database: dash_dev
+
+test:
+  <<: *login
+  database: dash_test
