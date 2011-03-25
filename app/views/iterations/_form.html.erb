@@ -10,16 +10,6 @@
     </div>
   <% end %>
 
-  <% if @sprint.blank? %>
-    <div class="field">
-      <%= f.label :sprint %><br />
-      <%= f.select :sprint, Sprint.all.map { |e| [e.name, e.id] } %>
-    </div>
-  <% else %>
-    <div class="field">
-      <%= f.label :sprint %>: <%= @sprint.name %>
-    </div>
-  <% end %>
   <div class="field">
     <%= f.label :number %><br />
     <%= f.text_field :number %>
