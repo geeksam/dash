@@ -7,7 +7,11 @@ Dash::Application.routes.draw do
   resources :sprints, :except => [:new, :create] do
     resources :iterations
   end
-  resources :iterations, :except => [:new, :create]
+  resources :iterations, :except => [:new, :create] do
+    member do
+      get :goals
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

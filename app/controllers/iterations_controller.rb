@@ -23,6 +23,10 @@ class IterationsController < ApplicationController
     end
   end
 
+  def goals
+    @iteration = Iteration.find(params[:id])
+  end
+
   # GET /iterations/new
   # GET /iterations/new.xml
   def new

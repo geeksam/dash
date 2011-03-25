@@ -1,5 +1,6 @@
 class Iteration < ActiveRecord::Base
   belongs_to :sprint
+  has_many :goals, :order => 'goals.id'
 
   def name
     'Iteration #%d' % number

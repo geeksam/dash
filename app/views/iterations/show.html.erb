@@ -2,7 +2,7 @@
 
 <p>
   <b>Sprint:</b>
-  <%= @iteration.sprint_name %>
+  <%= link_to @iteration.sprint_name, @iteration.sprint %>
 </p>
 
 <p>
@@ -11,5 +11,6 @@
 </p>
 
 
+<%= link_to 'Goals', goals_iteration_path(@iteration) %> |
 <%= link_to 'Edit', edit_iteration_path(@iteration) %> |
 <%= link_to "Back to #{@sprint.name}", sprint_path(@sprint) if @sprint.present? %>

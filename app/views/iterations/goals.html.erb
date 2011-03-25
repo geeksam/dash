@@ -1,0 +1,40 @@
+<script type="text/javascript" charset="utf-8">
+  function new_goal() {
+    // Yeah, I'm not writing any javascript today.
+  }
+</script>
+
+<p>
+  <b>Sprint:</b>
+  <%= link_to @iteration.sprint_name, @iteration.sprint %>
+</p>
+<p>
+  <b>Iteration:</b>
+  <%= @iteration.name %>
+</p>
+
+<table id="goals" border="1" cellspacing="0" cellpadding="5">
+  <thead>
+    <tr>
+      <th>Who</th>
+      <th>Result</th>
+      <th>What</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @iteration.goals.each do |goal| %>
+      <tr>
+        <td><%= goal.name %></td>
+        <td><%= goal.result %></td>
+        <td><%= goal.what %></td>
+        <td><%= goal.notes %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td colspan="10">
+        <%= link_to_function 'Add new row', 'new_goal()' %>
+      </td>
+    </tr>
+  </tbody>
+</table>
