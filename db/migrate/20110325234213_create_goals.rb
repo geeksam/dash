@@ -1,12 +1,11 @@
 class CreateGoals < ActiveRecord::Migration
   def self.up
     create_table :goals do |t|
-      t.belongs_to :member
       t.belongs_to :iteration
+      t.string :name
       t.string :result
-      t.boolean :nop
-      t.boolean :achieved
-      t.text :comments
+      t.string :what
+      t.string :notes
 
       t.timestamps
     end
