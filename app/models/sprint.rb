@@ -2,9 +2,7 @@ class Sprint < ActiveRecord::Base
   belongs_to :team
   has_many :iterations, :order => 'iterations.number'
 
-  def team_name
-    team.try(:name)
-  end
+  delegate :name, :members, :to => :team, :prefix => :team, :allow_nil => true
 
   def name
     'Sprint #%d' % number

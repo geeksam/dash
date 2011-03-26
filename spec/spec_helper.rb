@@ -31,3 +31,7 @@ end
 def crap!
   puts '<pre>%s</pre>' % page.body
 end
+
+def alice_bob_and_carol(attrs = {})
+  %w[Alice Bob Carol].map { |name| Member.new(attrs.merge(:name => name)) }
+end

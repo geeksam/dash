@@ -1,9 +1,10 @@
 require 'spec_helper'
 require 'integration/support'
 
-describe "Iteration goal tracking", :js => true do
+describe "Iteration goal tracking" do
   before(:each) do
     @iter = Factory.create(:iteration)
+    @team = @iter.sprint.team
   end
 
   it "should have a goals page" do

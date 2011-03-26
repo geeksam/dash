@@ -2,12 +2,18 @@ class Iteration < ActiveRecord::Base
   belongs_to :sprint
   has_many :goals, :order => 'goals.id'
 
+  delegate :name, :to => :sprint, :prefix => :sprint, :allow_nil => true
+
   def name
     'Iteration #%d' % number
   end
+
+  after_initialize :instantiate_default_goals
   
-  def sprint_name
-    sprint.try(:name)
+  def instantiate_default_goals
+    return if sprint.blank? # otherwise this fails at least one test, which is probably a code smell
+    return unless goals.empty?
+    self.goals = sprint.team_members.map { |e| Goal.new(:iteration => self, :member => e) }
   end
 end
 

@@ -6,6 +6,15 @@
 </p>
 
 <p>
+  <b>Members:</b>
+  <ul>
+    <% @team.members.each do |member| %>
+      <li><%= member.name %></li>
+    <% end %>
+  </ul>
+</p>
+
+<p>
   <b>Sprints:</b>
   <ul>
     <% @team.sprints.each do |sprint| %>
