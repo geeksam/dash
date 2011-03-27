@@ -16,6 +16,23 @@ describe Iteration do
     iter = Iteration.new(:sprint => sprint)
     iter.goals.map(&:member_name).sort.should == abc.map(&:name).sort
   end
+
+  describe "#previous_iteration" do
+    before(:each) do
+      @sprint = mock_model(Sprint, :team_members => [])
+      @i1 = Iteration.new(:sprint => @sprint)
+      @i2 = Iteration.new(:sprint => @sprint)
+      @sprint.stub!(:iterations => [@i1, @i2])
+    end
+
+    it "should return nil when it is the first iteration in its sprint" do
+      @i1.previous_iteration.should be_nil
+    end
+
+    it "should return the previous iteration when it is not the first iteration in its sprint" do
+      @i2.previous_iteration.should == @i1
+    end
+  end
 end
 
 # == Schema Information

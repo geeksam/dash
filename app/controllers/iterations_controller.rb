@@ -1,5 +1,6 @@
 class IterationsController < ApplicationController
   before_filter :load_sprint_from_params
+  before_filter :load_iteration_sprint_and_iterations, :only => [:plan, :review]
 
   # GET /iterations
   # GET /iterations.xml
@@ -23,8 +24,18 @@ class IterationsController < ApplicationController
     end
   end
 
-  def goals
-    @iteration = Iteration.find(params[:id])
+  def plan
+  end
+
+  def update_plan
+    raise 'hmm'
+  end
+
+  def review
+  end
+
+  def update_review
+    raise 'hmm'
   end
 
   # GET /iterations/new
@@ -90,5 +101,8 @@ class IterationsController < ApplicationController
   protected
   def load_sprint_from_params
     @sprint = Sprint.find(params[:sprint_id], :include => :iterations) if params[:sprint_id].present?
+  end
+  def load_iteration_sprint_and_iterations
+    @iteration = Iteration.find(params[:id], :include => { :sprint => :iterations })
   end
 end

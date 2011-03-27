@@ -11,6 +11,7 @@
 </p>
 
 
-<%= link_to 'Goals', goals_iteration_path(@iteration) %> |
+<%= link_to 'Plan',   iteration_plan_path(@iteration) %> |
+<%= link_to 'Review', iteration_review_path(@iteration) %> |
 <%= link_to 'Edit', edit_iteration_path(@iteration) %> |
 <%= link_to "Back to #{@sprint.name}", sprint_path(@sprint) if @sprint.present? %>

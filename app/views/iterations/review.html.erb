@@ -1,0 +1,46 @@
+<style type="text/css" media="screen">
+  td { vertical-align: top; }
+</style>
+<p>
+  <b>Sprint:</b>
+  <%= link_to @iteration.sprint_name, @iteration.sprint %>
+</p>
+<p>
+  <b>Iteration:</b>
+  <%= @iteration.name %>
+</p>
+
+<%= form_for(@iteration, :url => iteration_review_path) do |f| %>
+  <table id="goals" border="1" cellspacing="0" cellpadding="5">
+    <thead>
+      <tr>
+        <th>Who</th>
+        <th>Goal</th>
+        <th>Comments</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= f.fields_for(:goals, @iteration.goals) do |g| %>
+        <% goal = g.object %>
+        <tr>
+          <td>
+            <%= g.hidden_field :member_id %>
+            <%= goal.member_name %>
+          </td>
+          <td>
+            <% if goal.result.blank? %>
+              N/A
+            <% else %>
+              <%= goal.result %>
+              <br />
+              <%= g.check_box :nop %><%= g.label :nop, 'NOP?' %>
+              <%= g.check_box :achieved %><%= g.label :achieved, 'Achieved?' %>
+            <% end %>
+          </td>
+          <td><%= g.text_area :comments, :size => '40x2' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br /><%= f.submit 'Save' %>
+<% end %>
