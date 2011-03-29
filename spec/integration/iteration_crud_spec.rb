@@ -36,5 +36,9 @@ describe "Iteration CRUD" do
       iter.sprint.should == @sprint
       current_path.should == iteration_path(iter)
     end
+    
+    it "should let you set up goals from the get-go" do
+      pending
+    end
   end
 end
