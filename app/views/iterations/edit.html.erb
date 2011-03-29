@@ -2,6 +2,11 @@
 
 <%= form_for(@iteration) do |f| %>
   <%= render 'form', { :f => f } %>
+  <div class="actions">
+    <%= f.submit 'Save and Previous' %>
+    <%= f.submit 'Save' %>
+    <%= f.submit 'Save and Next' %>
+  </div>
 <% end %>
 
 <%= link_to 'Show', @iteration %> |

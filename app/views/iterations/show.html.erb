@@ -10,8 +10,45 @@
   <%= @iteration.name %>
 </p>
 
+<h2>Goals</h2>
+<table id="goals" border="1" cellspacing="0" cellpadding="5">
+  <thead>
+    <tr>
+      <th>Who</th>
+      <th>Last Goal</th>
+      <th>Current Goal</th>
+      <th>Status</th>
+      <th>Comments</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @iteration.goals.each do |goal| %>
+      <% prev_goal = goal.previous %>
+      <tr id="goal_<%= goal.id %>">
+        <td class="member_name"><%= goal.member_name %></td>
+        <td class="prev_goal_summary"><%= goal.prev_goal_summary %></td>
+        <td class="result"><%= goal.result %></td>
+        <td class="status"><%= goal.status %></td>
+        <td class="comments"><%= goal.comments %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<%= link_to 'Plan',   iteration_plan_path(@iteration) %> |
-<%= link_to 'Review', iteration_review_path(@iteration) %> |
+
+<h2>Points</h2>
+<table border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <td>This Iteration:</td>
+    <td><strong><%= @iteration.points_ratio %></strong></td>
+  </tr>
+  <tr>
+    <td>This Sprint:</td>
+    <td><strong><%= @iteration.sprint_points_ratio %></strong></td>
+  </tr>
+</table>
+<br />
+
+
 <%= link_to 'Edit', edit_iteration_path(@iteration) %> |
 <%= link_to "Back to #{@sprint.name}", sprint_path(@sprint) if @sprint.present? %>

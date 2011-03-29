@@ -28,8 +28,8 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
 end
 
-def crap!
-  puts '<pre>%s</pre>' % page.body
+def crap!(text = page.body)
+  puts '<pre>%s</pre>' % ERB::Util.html_escape(text)
 end
 
 def alice_bob_and_carol(attrs = {})

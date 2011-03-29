@@ -1,6 +1,6 @@
 class IterationsController < ApplicationController
   before_filter :load_sprint_from_params
-  before_filter :load_iteration_sprint_and_iterations, :only => [:plan, :review]
+  before_filter :load_iteration_sprint_and_iterations, :only => [:plan, :update_plan, :review, :update_review]
 
   # GET /iterations
   # GET /iterations.xml
@@ -22,20 +22,6 @@ class IterationsController < ApplicationController
       format.html # show.html.erb
       format.xml  { render :xml => @iteration }
     end
-  end
-
-  def plan
-  end
-
-  def update_plan
-    raise 'hmm'
-  end
-
-  def review
-  end
-
-  def update_review
-    raise 'hmm'
   end
 
   # GET /iterations/new
@@ -77,7 +63,17 @@ class IterationsController < ApplicationController
 
     respond_to do |format|
       if @iteration.update_attributes(params[:iteration])
-        format.html { redirect_to(@iteration, :notice => 'Iteration was successfully updated.') }
+        format.html do
+          target = case params[:commit]
+          when 'Save and Previous'
+            @iteration.previous_iteration || @iteration
+          when 'Save and Next'
+            @iteration.next_iteration(:create => true)
+          else
+            @iteration
+          end
+          redirect_to(edit_iteration_path(target), :notice => 'Iteration was successfully updated.')
+        end
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

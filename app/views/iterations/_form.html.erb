@@ -14,6 +14,28 @@
     <%= f.label :number %><br />
     <%= f.text_field :number %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+  <h2>Goals</h2>
+  <table id="goals" border="1" cellspacing="0" cellpadding="5">
+    <thead>
+      <tr>
+        <th>Who</th>
+        <th>Last Goal</th>
+        <th>Current Goal</th>
+        <th>Status</th>
+        <th>Comments</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= f.fields_for :goals do |g| %>
+        <% goal = g.object %>
+        <tr id="goal_<%= goal.id %>">
+          <td><%= goal.member_name %></td>
+          <td><%= goal.prev_goal_summary %></td>
+          <td><%= g.text_field :result %></td>
+          <td><%= g.select :status, [nil] + Goal::STATUSES %></td>
+          <td><%= g.text_field :comments %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>

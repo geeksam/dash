@@ -5,15 +5,11 @@ Dash::Application.routes.draw do
     resources :sprints
   end
 
-  resources :sprints, :except => [:new, :create] do
+  resources :sprints, :except => [:index, :new, :create] do
     resources :iterations
   end
 
   resources :iterations, :except => [:new, :create]
-  match 'iterations/:id/review' => 'iterations#review',        :via => :get, :as => 'iteration_review'
-  match 'iterations/:id/review' => 'iterations#update_review', :via => :put, :as => 'iteration_review'
-  match 'iterations/:id/plan' => 'iterations#plan',        :via => :get, :as => 'iteration_plan'
-  match 'iterations/:id/plan' => 'iterations#update_plan', :via => :put, :as => 'iteration_plan'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

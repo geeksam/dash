@@ -7,6 +7,15 @@ class Sprint < ActiveRecord::Base
   def name
     'Sprint #%d' % number
   end
+
+  def points_ratio
+    return '0:0' if iterations.empty?
+    iterations.
+      map { |e| e.points_ratio.split(':').map(&:to_i) }.
+      transpose.
+      map(&:sum).
+      join(':')
+  end
 end
 
 # == Schema Information
